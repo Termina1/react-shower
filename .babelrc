@@ -1,0 +1,20 @@
+{
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "transform-react-constant-elements",
+        "transform-react-inline-elements"
+      ]
+    }
+  },
+
+  "plugins": [
+    "syntax-class-properties",
+    "transform-class-properties"
+  ],
+  "presets": ["es2015", "react", "stage-2"]
+}
