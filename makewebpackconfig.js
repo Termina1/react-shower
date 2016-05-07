@@ -76,9 +76,6 @@ module.exports = function(options) {
       filename: "js/bundle.js"
     },
     resolve: {
-      alias: {
-        "lodash/isPlainObject": "lodash.isplainobject"
-      },
       modulesDirectories: [
         process.cwd(),
         path.resolve(__dirname, "js"),
