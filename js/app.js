@@ -30,11 +30,9 @@ function render() {
     styles.unuse();
   }
 
-  if (config.proportions === '16x10') {
-    styles = require('style/useable!css!shower-ribbon/styles/screen-16x10.css');
-  } else {
-    styles = require('style/useable!css!shower-ribbon/styles/screen-4x3.css');
-  }
+  var req = require.context('style-theme');
+
+  styles = req(`./shower-${config.theme}/styles/screen-${config.proportions}.css`);
 
   styles.use();
 
