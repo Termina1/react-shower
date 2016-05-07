@@ -58,7 +58,7 @@ class Deck extends Component {
     window.addEventListener('resize', this.resizeListener);
   }
 
-  compinentDidUnmount() {
+  componentWillUnmount() {
     document.removeEventListener('keydown', this.listener);
     window.removeEventListener('resize', this.resizeListener);
   }

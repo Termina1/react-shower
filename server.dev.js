@@ -10,6 +10,7 @@ new WebpackDevServer(webpack(config), { // Start a server
   publicPath: config.output.publicPath,
   hot: true, // With hot reloading
   inline: false,
+  contentBase: __dirname,
   historyApiFallback: true
 }).listen(3000, 'localhost', function (err, result) {
   if (err) {

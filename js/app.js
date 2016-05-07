@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import FontFaceObserver from 'fontfaceobserver';
 import { createHistory } from 'history';
 import persistState from 'redux-localstorage';
+import RedBox from "redbox-react";
 
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
@@ -42,6 +43,7 @@ function render() {
   const App = require('components/App.react').default;
   const Presentation = require('presentation').default;
   const rootEl = document.getElementById('app');
+
   try {
     ReactDOM.render(
       <Provider store={store}>
@@ -52,7 +54,6 @@ function render() {
       rootEl
     );
   } catch(err) {
-    const RedBox = require('redbox-react');
     ReactDOM.render(
       <RedBox error={err} />,
       rootEl
@@ -63,15 +64,22 @@ function render() {
 const store = createStoreWithMiddleware(rootReducer);
 
 if (module.hot) {
+
+  module.hot.accept(function(err) {
+    const rootEl = document.getElementById('app');
+    ReactDOM.render(
+      <RedBox error={err} />,
+      rootEl
+    );
+  })
   module.hot.accept('components/App.react', () => {
     setTimeout(render);
   });
-  module.hot.accept('presentation', () => {
+  module.hot.accept('presentation', (errors, t, d) => {
     setTimeout(render);
   });
 
   module.hot.accept('config.json', () => {
-
     setTimeout(render);
   });
 
