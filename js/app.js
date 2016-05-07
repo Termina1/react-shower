@@ -23,24 +23,23 @@ const createStoreWithMiddleware = compose(
 var styles;
 
 function render() {
-
-  const config = require('config.json');
-
-  if (styles) {
-    styles.unuse();
-  }
-
-  var req = require.context('style-theme');
-
-  styles = req(`./shower-${config.theme}/styles/screen-${config.proportions}.css`);
-
-  styles.use();
-
-  const App = require('components/App.react').default;
-  const Presentation = require('presentation').default;
-  const rootEl = document.getElementById('app');
-
   try {
+    const config = require('config.json');
+
+    if (styles) {
+      styles.unuse();
+    }
+
+    var req = require.context('style-theme');
+
+    styles = req(`./shower-${config.theme}/styles/screen-${config.proportions}.css`);
+
+    styles.use();
+
+    const App = require('components/App.react').default;
+    const Presentation = require('presentation').default;
+    const rootEl = document.getElementById('app');
+
     ReactDOM.render(
       <Provider store={store}>
         <App>
