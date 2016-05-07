@@ -4,11 +4,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var fs = require('fs');
 
-// var nm = path.join(global.workingPath, '/node_modules/');
-// var dirs = fs.readdirSync(nm)
-//   .filter(function(el) { return ['react-shower'].indexOf(el) < 0 })
-//   .map(function(el) { return path.join(nm, el) });
-
 const showerThemeRegEx = /shower-[^\/]+\/styles\/[^\/]+\.css/;
 
 module.exports = function(options) {
@@ -49,7 +44,8 @@ module.exports = function(options) {
         "process.env": {
           NODE_ENV: JSON.stringify("production")
         }
-      })
+      }),
+      new webpack.ContextReplacementPlugin(/style-theme/, path.join(process.cwd(), "node_modules"), true, showerThemeRegEx)
     ];
 
   // If app is in development
