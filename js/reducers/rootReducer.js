@@ -1,10 +1,8 @@
 import deckReducer from 'reducers/deckReducer';
-import { routerStateReducer } from 'redux-router';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-  deck: deckReducer,
-  router: routerStateReducer
+  deck: deckReducer
 });
 
 export default rootReducer;

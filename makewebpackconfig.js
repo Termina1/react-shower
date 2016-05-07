@@ -105,7 +105,7 @@ module.exports = function(options) {
           test: /\.css$/,
           loader: cssLoaders,
           exclude: [
-            path.join(global.workingPath, '/node_modules/')
+            path.join(process.cwd(), '/node_modules/')
           ],
         }, {
           test: /\.jpe?g$|\.gif$|\.png|\.woff$|\.woff2$|\.eot$|\.ttf$|\.svg$/i,
@@ -116,7 +116,7 @@ module.exports = function(options) {
           loader: "json-loader"
         }, {
           loader: "raw-loader",
-          include: [path.join(global.workingPath, "code")]
+          include: [path.join(process.cwd(), "code")]
         }
       ]
     },

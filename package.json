@@ -62,8 +62,8 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "cross-env NODE_ENV=development node server.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js --progress --colors -p && cp -R js/utils build/js"
+    "start": "node server.dev.js",
+    "build": "webpack --config webpack.prod.config.js --progress --colors -p && cp -R js/utils build/js"
   },
   "author": "Termina1",
   "license": "MIT"

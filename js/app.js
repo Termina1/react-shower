@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { reduxReactRouter, routerStateReducer } from 'redux-router';
 import thunk from 'redux-thunk';
 import FontFaceObserver from 'fontfaceobserver';
 import { createHistory } from 'history';

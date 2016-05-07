@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import Deck from "components/Deck.react";
 import Slide from "components/Slide.react";
-import Code from "components/Code.react";
-
-import vkLogo from "img/vk.svg";
-import watch from "./code/watch.js"
-
-
-import {} from "css/theme.css";
 
 const TOPIC = 'Ничего ты не знаешь, Джон Сноу. Фронтенд new.vk.com.';
 const SPEAKER = 'Вячеслав Шебанов';
@@ -25,7 +18,7 @@ export default () =>
       <p>{SPEAKER}</p>
     </Slide>
     <Slide>
-      Привет 577555
+      Привет 5
     </Slide>
     <Slide>
       Привет 3
