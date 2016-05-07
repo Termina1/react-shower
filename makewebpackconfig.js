@@ -71,18 +71,25 @@ module.exports = function(options) {
     },
     module: {
       loaders: [{
-          test: /\.js$/, // Transform all .js files required somewhere within an entry point...
-          loader: 'babel', // ...with the specified loaders...
+          test: /\.js$/,
+          loader: 'babel',
           exclude: [
             path.join(__dirname, '/node_modules/'),
             path.join(__dirname, '/code/'),
           ],
         }, {
-          test:   /\.css$/, // Transform all .css files required somewhere within an entry point...
-          loader: cssLoaders // ...with PostCSS
+          test: /\.css$/,
+          loader: cssLoaders,
+          exclude: [
+            path.join(__dirname, '/node_modules/')
+          ],
         }, {
           test: /\.jpe?g$|\.gif$|\.png|\.woff$|\.woff2$|\.eot$|\.ttf$|\.svg$/i,
           loader: "url-loader?limit=10000"
+        },
+        {
+          test:/\.json$/,
+          loader: "json-loader"
         }
       ]
     },

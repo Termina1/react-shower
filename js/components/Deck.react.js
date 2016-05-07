@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-;import {changeActiveSlide, changeMode} from "../actions/AppActions";
+import {changeActiveSlide, changeMode} from "../actions/AppActions";
 import { connect } from 'react-redux';
+import {PREV_KEYS, NEXT_KEYS, ESC, ENTER} from "../constants/Shortcuts";
+import {PROPORTIONS} from "../constants/AppConstants";
 
-const PREV_KEYS = [37, 38, 33];
-const NEXT_KEYS = [39, 40, 34];
-const ESC = 27;
-const ENTER = 13;
-
-function getTransformScale(props) {
+function getTransformScale(props, pos) {
   if (props.mode === 'list') {
     return 'scale(1)';
   }
+  
   var denominator = Math.max(
-    1024 / window.innerWidth,
-    640 / window.innerHeight
+    PROPORTIONS[pos].width / window.innerWidth,
+    PROPORTIONS[pos].height / window.innerHeight
   );
 
   return 'scale(' + (1/denominator) + ')';
@@ -26,11 +24,16 @@ function getCount(children) {
 
 class Deck extends Component {
 
+  static contextTypes = {
+    proportions: React.PropTypes.string
+  }
+
   onKeyPress(ev) {
     const dispatch = this.props.dispatch;
     const slide = parseInt(this.props.slide);
     const count = getCount(this.props.children);
     const wholeLength = this.props.children.length;
+
     if (PREV_KEYS.indexOf(ev.which) >= 0 && slide - 1 >= wholeLength - count) {
       dispatch(changeActiveSlide(slide - 1));
     }
@@ -76,7 +79,7 @@ class Deck extends Component {
     var progress = (this.props.slide - 1)/(getCount(this.props.children) - 1) * 100;
 
     return (
-      <div style={{transform: getTransformScale(this.props)}} className={`shower ${this.props.mode}`}>
+      <div style={{transform: getTransformScale(this.props, this.context.proportions)}} className={`shower ${this.props.mode}`}>
         {children}
         <div className="progress"
           role="progressbar" aria-valuemin="0"
