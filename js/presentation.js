@@ -18,7 +18,7 @@ export default () =>
       <p>{SPEAKER}</p>
     </Slide>
     <Slide>
-      Привет 5
+      Привет 13333
     </Slide>
     <Slide>
       Привет 3
