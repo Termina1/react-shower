@@ -1,6 +1,9 @@
 {
   "name": "react-shower",
   "version": "1.0.0",
+  "bin" : {
+    "reshower" : "./bin/reshower.js" 
+  },
   "dependencies": {
     "babel-plugin-syntax-class-properties": "^6.5.0",
     "babel-plugin-transform-class-properties": "^6.6.0",
