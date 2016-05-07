@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import {changeActiveSlide, changeMode} from "../actions/AppActions";
+import {changeActiveSlide, changeMode} from "actions/AppActions";
 import { connect } from 'react-redux';
-import {PREV_KEYS, NEXT_KEYS, ESC, ENTER} from "../constants/Shortcuts";
-import {PROPORTIONS} from "../constants/AppConstants";
+import {PREV_KEYS, NEXT_KEYS, ESC, ENTER} from "constants/Shortcuts";
+import {PROPORTIONS} from "constants/AppConstants";
 
 function getTransformScale(props, pos) {
   if (props.mode === 'list') {
     return 'scale(1)';
   }
-  
+
   var denominator = Math.max(
     PROPORTIONS[pos].width / window.innerWidth,
     PROPORTIONS[pos].height / window.innerHeight

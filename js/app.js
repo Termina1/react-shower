@@ -11,9 +11,10 @@ import persistState from 'redux-localstorage';
 
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
-import '../css/main.css';
+import 'css/main.css';
+import 'css/prism.css';
 
-import rootReducer from './reducers/rootReducer';
+import rootReducer from 'reducers/rootReducer';
 
 const createStoreWithMiddleware = compose(
   persistState(),
@@ -24,7 +25,7 @@ var styles;
 
 function render() {
 
-  const config = require('../config.json');
+  const config = require('config.json');
 
   if (styles) {
     styles.unuse();
@@ -38,8 +39,8 @@ function render() {
 
   styles.use();
 
-  const App = require('./components/App.react').default;
-  const Presentation = require('./presentation').default;
+  const App = require('components/App.react').default;
+  const Presentation = require('presentation').default;
   const rootEl = document.getElementById('app');
   try {
     ReactDOM.render(
@@ -62,20 +63,20 @@ function render() {
 const store = createStoreWithMiddleware(rootReducer);
 
 if (module.hot) {
-  module.hot.accept('./components/App.react', () => {
+  module.hot.accept('components/App.react', () => {
     setTimeout(render);
   });
-  module.hot.accept('./presentation', () => {
-    setTimeout(render);
-  });
-
-  module.hot.accept('../config.json', () => {
-
+  module.hot.accept('presentation', () => {
     setTimeout(render);
   });
 
-  module.hot.accept('./reducers/rootReducer', () => {
-    const nextRootReducer = require('./reducers/rootReducer').default;
+  module.hot.accept('config.json', () => {
+
+    setTimeout(render);
+  });
+
+  module.hot.accept('reducers/rootReducer', () => {
+    const nextRootReducer = require('reducers/rootReducer').default;
     store.replaceReducer(nextRootReducer);
   });
 }

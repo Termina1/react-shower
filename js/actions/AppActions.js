@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-import { CHANGE_ACTIVE_SLIDE, CHANGE_MODE } from '../constants/AppConstants';
+import { CHANGE_ACTIVE_SLIDE, CHANGE_MODE } from 'constants/AppConstants';
 
 export function changeActiveSlide(num) {
   return {

@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import Deck from "./components/Deck.react";
-import Slide from "./components/Slide.react";
-import Code from "./components/Code.react";
+import Deck from "components/Deck.react";
+import Slide from "components/Slide.react";
+import Code from "components/Code.react";
 
-import vkLogo from "../img/vk.svg";
-import paperLogo from "../img/paper.svg";
-import spbfront from "../img/spb-front.jpg";
-import jon2 from "../img/jon2.jpg";
-import newvk from "../img/new.vk.png";
-import ie from "../img/ie.jpg";
-import frame from "../img/frame.png";
-import feature from "../img/feature.jpg";
-import staticScheme from "../img/static.png";
-import graph from "../img/graph.png";
-import ladder from "../img/ladder.png";
+import vkLogo from "img/vk.svg";
+import paperLogo from "img/paper.svg";
+import spbfront from "img/spb-front.jpg";
+import jon2 from "img/jon2.jpg";
+import newvk from "img/new.vk.png";
+import ie from "img/ie.jpg";
+import frame from "img/frame.png";
+import feature from "img/feature.jpg";
+import staticScheme from "img/static.png";
+import graph from "img/graph.png";
+import ladder from "img/ladder.png";
 
-import gulp from "raw!../code/gulp.js";
-import watch from "raw!../code/watch.js";
+import gulp from "raw!code/gulp.js";
+import watch from "raw!code/watch.js";
 
-import {} from "../css/theme.css";
-import {} from "../css/prism.css";
+import {} from "css/theme.css";
+import {} from "css/prism.css";
 
 const TOPIC = 'Ничего ты не знаешь, Джон Сноу. Фронтенд new.vk.com.';
 const SPEAKER = 'Вячеслав Шебанов';

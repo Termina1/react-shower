@@ -1,4 +1,4 @@
-import deckReducer from './deckReducer';
+import deckReducer from 'reducers/deckReducer';
 import { routerStateReducer } from 'redux-router';
 import { combineReducers } from 'redux';
 

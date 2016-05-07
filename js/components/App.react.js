@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import config from "../../config.json";
+import config from "config.json";
 
 export default class App extends Component {
 

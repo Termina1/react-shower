@@ -1,5 +1,5 @@
-import { CHANGE_ACTIVE_SLIDE, CHANGE_MODE } from '../constants/AppConstants';
-import assignToEmpty from '../utils/assign';
+import { CHANGE_ACTIVE_SLIDE, CHANGE_MODE } from 'constants/AppConstants';
+import assignToEmpty from 'utils/assign';
 
 const initialState = {
   mode: 'list',

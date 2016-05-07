@@ -3,6 +3,8 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+global.workingPath = global.workingPath || "./";
+
 module.exports = function(options) {
   var entry, jsLoaders, plugins, cssLoaders;
 
@@ -69,14 +71,25 @@ module.exports = function(options) {
       path: path.resolve(__dirname, 'build'),
       filename: "js/bundle.js"
     },
+    resolve: {
+      modulesDirectories: [global.workingPath, path.resolve(__dirname, "js"), __dirname, path.resolve(__dirname, "node_modules")]
+    },
     module: {
       loaders: [{
           test: /\.js$/,
           loader: 'babel',
-          exclude: [
-            path.join(__dirname, '/node_modules/'),
-            path.join(__dirname, '/code/'),
+          include: [
+            path.resolve(__dirname, "js"),
+            global.workingPath
           ],
+          exclude: [path.join(global.workingPath, "code")],
+          query: {
+            "plugins": [
+              "syntax-class-properties",
+              "transform-class-properties"
+            ],
+            "presets": ["es2015", "react", "stage-2"]
+          }
         }, {
           test: /\.css$/,
           loader: cssLoaders,
@@ -90,6 +103,9 @@ module.exports = function(options) {
         {
           test:/\.json$/,
           loader: "json-loader"
+        }, {
+          loader: "raw-loader",
+          include: [path.join(global.workingPath, "code")]
         }
       ]
     },
