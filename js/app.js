@@ -23,6 +23,7 @@ const createStoreWithMiddleware = compose(
 var styles;
 
 function render() {
+  const rootEl = document.getElementById('app');
   try {
     const config = require('config.json');
 
@@ -38,7 +39,6 @@ function render() {
 
     const App = require('components/App.react').default;
     const Presentation = require('presentation').default;
-    const rootEl = document.getElementById('app');
 
     ReactDOM.render(
       <Provider store={store}>
