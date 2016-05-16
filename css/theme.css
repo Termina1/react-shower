@@ -1,0 +1,30 @@
+#app .picture h2 {
+  color:#FFF;
+}
+
+#app .cover-me h2 {
+  margin:30px 0 0;
+  color:#FFF;
+  text-align:center;
+  font-size:70px;
+}
+
+#app .cover-me p {
+  margin:10px 0 0;
+  text-align:center;
+  color:#FFF;
+  font-style:italic;
+  font-size:20px;
+}
+#app .cover-me p a {
+  color:#FFF;
+}
+
+#app .see-more h2 {
+  font-size:100px
+}
+
+#app .see-more img {
+  width:0.72em;
+  height:0.72em;
+}
