@@ -2,7 +2,7 @@
   "name": "react-shower",
   "version": "1.0.0",
   "bin": {
-    "reshower": "./bin/reshower.js"
+    "react-shower": "./bin/react-shower.js"
   },
   "dependencies": {
     "autoprefixer": "^6.0.2",
