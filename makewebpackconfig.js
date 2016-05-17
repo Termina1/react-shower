@@ -100,8 +100,9 @@ module.exports = function(options) {
         }, {
           test: /\.css$/,
           loader: cssLoaders,
-          exclude: [
-            path.join(process.cwd(), '/node_modules/')
+          include: [
+            path.join(process.cwd(), 'css'),
+            path.join(__dirname, 'css'),
           ],
         }, {
           test: showerThemeRegEx,
