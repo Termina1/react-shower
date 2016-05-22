@@ -11,7 +11,7 @@ switch (cmd) {
     var dest = process.argv[3];
     var stream = exec("node_modules/.bin/webpack --config " + confpath + "  --progress --colors -p && cp -R " + utils + " " + utilsDest, function(err) {
       if (!err && dest) {
-        exec('mv ./build ' + dest);
+        exec("mkdir -p " + dest + " && cp -R -f ./build/* " + dest + " && rm -rf ./build");
       }
     });
     stream.stdout.pipe(process.stdout);
