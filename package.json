@@ -49,7 +49,7 @@
     "shower-ribbon": "^2.0.4",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
-    "webpack": "git+ssh://github.com/Termina1/webpack.git#bc2076738b686b9ac93ab8918916b0873c06f81d",
+    "webpack": "^1.13.1",
     "webpack-dev-server": "^1.11.0"
   },
   "devDependencies": {
