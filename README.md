@@ -1,6 +1,10 @@
 # react-shower
 [Shower](https://shwr.me) presentation engine running on React and Redux.
 
+## Known issues
+
+Does not work on node.js 6.x yet! 
+
 ## Usage
 
 I built [reshower](https://github.com/Termina1/reshower) cli-tool specifically to streamline

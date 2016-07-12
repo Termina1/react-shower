@@ -1,6 +1,6 @@
 {
   "name": "react-shower",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "bin": {
     "react-shower": "./bin/react-shower.js"
   },
