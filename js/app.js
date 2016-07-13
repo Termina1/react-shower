@@ -7,6 +7,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import { createHistory } from 'history';
 import persistState from 'redux-localstorage';
 import RedBox from "redbox-react";
+import "prismjs";
 
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
