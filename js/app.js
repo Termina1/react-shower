@@ -11,7 +11,6 @@ import RedBox from "redbox-react";
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 import 'css/main.css';
-import 'css/prism.css';
 
 import rootReducer from 'reducers/rootReducer';
 
