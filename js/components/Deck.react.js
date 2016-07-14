@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import {changeActiveSlide, changeMode} from "actions/AppActions";
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { reactive } from "react-derivable";
+
 import {PREV_KEYS, NEXT_KEYS, ESC, ENTER} from "constants/Shortcuts";
 import {PROPORTIONS} from "constants/AppConstants";
+import * as AppState from "AppState";
 
-function getTransformScale(props, pos) {
-  if (props.mode === 'list') {
+
+function getTransformScale(mode, pos) {
+  if (mode === 'list') {
     return 'scale(1)';
   }
 
@@ -29,25 +31,32 @@ class Deck extends Component {
   }
 
   onKeyPress(ev) {
-    const dispatch = this.props.dispatch;
-    const slide = parseInt(this.props.slide);
+    const slide = AppState.state.get().slide;
     const count = getCount(this.props.children);
     const wholeLength = this.props.children.length;
 
-    if (PREV_KEYS.indexOf(ev.which) >= 0 && slide - 1 >= wholeLength - count) {
-      dispatch(changeActiveSlide(slide - 1));
+    if (PREV_KEYS.indexOf(ev.which) >= 0) {
+      ev.preventDefault();
+      if (slide - 1 >= wholeLength - count) {
+        AppState.changeActiveSlide(slide - 1);
+      }
     }
 
-    if (NEXT_KEYS.indexOf(ev.which) >= 0 && slide + 1 <= count) {
-      dispatch(changeActiveSlide(slide + 1));
+    if (NEXT_KEYS.indexOf(ev.which) >= 0) {
+      ev.preventDefault();
+      if (slide + 1 <= count) {
+        AppState.changeActiveSlide(slide + 1);
+      }
     }
 
     if (ev.which === ESC) {
-      dispatch(changeMode("list"));
+      ev.preventDefault();
+      AppState.changeMode("list");
     }
 
     if (ev.which === ENTER) {
-      dispatch(changeMode("full"));
+      ev.preventDefault();
+      AppState.changeMode("full");
     }
   }
 
@@ -65,21 +74,19 @@ class Deck extends Component {
 
   render() {
     var index = 0;
+    var {slide, mode} = AppState.state.get();
     var children = React.Children.map(this.props.children, (child) =>
       React.cloneElement(child, {
         index: index++,
-        data: {
-          slide: this.props.slide,
-          mode: this.props.mode
-        },
-        dispatch: this.props.dispatch
+        data: {slide, mode},
       })
     );
 
-    var progress = (this.props.slide - 1)/(getCount(this.props.children) - 1) * 100;
+    var progress = (slide - 1)/(getCount(this.props.children) - 1) * 100;
+    console.log(slide, mode);
 
     return (
-      <div style={{transform: getTransformScale(this.props, this.context.proportions)}} className={`shower ${this.props.mode}`}>
+      <div style={{transform: getTransformScale(mode, this.context.proportions)}} className={`shower ${mode}`}>
         {children}
         <div className="progress"
           role="progressbar" aria-valuemin="0"
@@ -91,11 +98,4 @@ class Deck extends Component {
   }
 }
 
-function select(state) {
-  return {
-    slide: state.deck.slide,
-    mode: state.deck.mode
-  };
-}
-
-export default connect(select)(Deck);
+export default reactive(Deck);

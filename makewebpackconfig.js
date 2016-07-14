@@ -7,7 +7,7 @@ var fs = require('fs');
 const showerThemeRegEx = /shower-[^\/]+\/styles\/[^\/]+\.css/;
 
 module.exports = function(options) {
-  var entry, jsLoaders, plugins, cssLoaders;
+  var entry, jsLoaders, plugins, cssLoaders, devtool;
 
   // If production is true
   if (options.prod) {
@@ -57,6 +57,7 @@ module.exports = function(options) {
       path.resolve(__dirname, 'js/app.js') // Start with js/app.js...
     ];
     cssLoaders = 'style-loader!css-loader!postcss-loader';
+    devtool = 'cheap-module-eval-source-map';
     // Only plugin is the hot module replacement plugin
     plugins = [
       new webpack.HotModuleReplacementPlugin(), // Make hot loading work
@@ -120,6 +121,7 @@ module.exports = function(options) {
         }
       ]
     },
+    devtool: devtool,
     plugins: plugins,
     postcss: function() {
       return [

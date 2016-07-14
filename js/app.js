@@ -1,24 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
 import FontFaceObserver from 'fontfaceobserver';
-import { createHistory } from 'history';
-import persistState from 'redux-localstorage';
 import RedBox from "redbox-react";
 
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 import 'css/main.css';
 import 'css/prism.css';
-
-import rootReducer from 'reducers/rootReducer';
-
-const createStoreWithMiddleware = compose(
-  persistState(),
-  applyMiddleware(thunk)
-)(createStore);
 
 var styles;
 
@@ -41,11 +29,9 @@ function render() {
     const Presentation = require('presentation').default;
 
     ReactDOM.render(
-      <Provider store={store}>
-        <App>
-          <Presentation />
-        </App>
-      </Provider>,
+      <App>
+        <Presentation />
+      </App>,
       rootEl
     );
   } catch(err) {
@@ -55,8 +41,6 @@ function render() {
     );
   }
 }
-
-const store = createStoreWithMiddleware(rootReducer);
 
 if (module.hot) {
 
@@ -76,11 +60,6 @@ if (module.hot) {
 
   module.hot.accept('config.json', () => {
     setTimeout(render);
-  });
-
-  module.hot.accept('reducers/rootReducer', () => {
-    const nextRootReducer = require('reducers/rootReducer').default;
-    store.replaceReducer(nextRootReducer);
   });
 }
 
