@@ -4,6 +4,11 @@ import Slide from "components/Slide.react";
 import Code from "components/Code.react";
 import DocumentTitle from "react-document-title";
 
+// Prism JS configuration
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-jsx';
+import "style!css!prismjs/themes/prism.css"; // Theme
+
 import "css/theme.css";
 
 const TOPIC = 'Shower Presentation Engine';
@@ -64,6 +69,11 @@ export default () =>
           </blockquote>
           <figcaption>Marcus Tullius Cicero</figcaption>
         </figure>
+      </Slide>
+      <Slide>
+        <h2>Support for different languages</h2>
+        <Code code={`{ "foo": "bar" }`} lang="json" />
+        <Code code={`<JSX isCool={ true } />`} lang="jsx" />
       </Slide>
       <Slide className="slide">
         <h2>Code samples</h2>
