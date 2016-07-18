@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {changeActiveSlide, changeMode} from "actions/AppActions";
+import * as Derivable from 'derivable';
+import * as AppState from 'AppState';
 
 export default class Slide extends Component {
 
   onClick() {
-    const dispatch = this.props.dispatch;
-    dispatch(changeActiveSlide(this.props.index));
-    dispatch(changeMode('full'));
+    Derivable.transact(() => {
+      AppState.changeActiveSlide(this.props.index);
+      AppState.changeMode('full');
+    });
   }
 
   render() {
-    var cls = '';
-    if (this.props.index == this.props.data.slide) {
+    let cls = '';
+    if (this.props.index === this.props.data.slide) {
       cls = 'active';
     }
     return (
@@ -21,10 +22,4 @@ export default class Slide extends Component {
       </section>
     );
   }
-}
-
-function select(state) {
-  return {
-    data: state.deck
-  };
 }
