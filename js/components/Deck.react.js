@@ -83,7 +83,6 @@ class Deck extends Component {
     );
 
     var progress = (slide - 1)/(getCount(this.props.children) - 1) * 100;
-    console.log(slide, mode);
 
     return (
       <div style={{transform: getTransformScale(mode, this.context.proportions)}} className={`shower ${mode}`}>
